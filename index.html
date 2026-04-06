@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: populated by script.js from config -->
+  <title data-bind="meta.title"></title>
+  <meta name="description" data-bind="meta.description" content="">
+  <meta name="keywords" data-bind="meta.keywords" content="">
+  <link rel="canonical" data-bind-href="meta.canonical" href="">
+
+  <!-- OGP -->
+  <meta property="og:title" data-bind="meta.ogTitle" content="">
+  <meta property="og:description" data-bind="meta.ogDescription" content="">
+  <meta property="og:image" data-bind="meta.ogImage" content="">
+  <meta property="og:url" data-bind="meta.ogUrl" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Preconnect for web fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SKIP LINK (Accessibility)
+       ============================================================ -->
+  <a href="#main-content" class="c-skip-link" data-bind="accessibility.skipLinkText"></a>
+
+  <!-- ============================================================
+       HEADER / GLOBAL NAV
+       ============================================================ -->
+  <header class="l-header" role="banner">
+    <div class="l-header__inner l-container">
+      <a href="#" class="l-header__logo" data-bind-href="header.logoHref" aria-label="">
+        <img src="" alt="" data-bind-src="header.logoSrc" data-bind-alt="header.logoAlt" class="l-header__logo-img"
+          width="180" height="40" decoding="async">
+      </a>
+
+      <nav class="l-header__nav" aria-label="メインナビゲーション">
+        <ul class="l-header__nav-list" data-bind-list="header.navItems">
+          <!-- template: li.l-header__nav-item > a[data-bind-href="href"][data-bind="label"] -->
+        </ul>
+      </nav>
+
+      <div class="l-header__cta">
+        <a href="" class="c-btn c-btn--primary c-btn--sm" data-bind-href="header.ctaHref" data-bind="header.ctaText"
+          role="button"></a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="l-header__hamburger" type="button" aria-expanded="false" aria-controls="mobile-nav"
+        aria-label="メニューを開く">
+        <span class="l-header__hamburger-line"></span>
+        <span class="l-header__hamburger-line"></span>
+        <span class="l-header__hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav drawer -->
+    <nav id="mobile-nav" class="l-header__mobile-nav" aria-label="モバイルナビゲーション" hidden>
+      <ul class="l-header__mobile-nav-list" data-bind-list="header.navItems">
+        <!-- template: li.l-header__mobile-nav-item > a[data-bind-href="href"][data-bind="label"] -->
+      </ul>
+      <a href="" class="c-btn c-btn--primary c-btn--block" data-bind-href="header.ctaHref"
+        data-bind="header.ctaText"></a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content" role="main">
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 1: HERO (First View)
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-hero" aria-labelledby="hero-heading">
+      <div class="l-container s-hero__inner">
+        <div class="s-hero__copy">
+          <p class="s-hero__lead c-heading" data-bind="hero.leadText"></p>
+          <h1 id="hero-heading" class="s-hero__title c-heading" data-bind="hero.title"></h1>
+          <p class="s-hero__sub" data-bind="hero.subText"></p>
+          <a href="" class="c-btn c-btn--cta c-btn--lg" data-bind-href="hero.ctaHref" data-bind="hero.ctaText"
+            role="button"></a>
+        </div>
+        <div class="s-hero__visual">
+          <img src="" alt="" data-bind-src="hero.imageSrc" data-bind-alt="hero.imageAlt" class="s-hero__img" width="640"
+            height="480" fetchpriority="high" decoding="sync">
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 2: SOCIAL PROOF / ACHIEVEMENTS
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-proof" aria-labelledby="proof-heading">
+      <div class="l-container">
+        <h2 id="proof-heading" class="c-heading c-heading--section" data-bind="proof.heading"></h2>
+        <ul class="s-proof__list" data-bind-list="proof.items">
+          <!--
+            template:
+            li.s-proof__item
+              span.s-proof__number[data-bind="number"]
+              span.s-proof__label[data-bind="label"]
+          -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 3: PROBLEMS / EMPATHY
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-problems" aria-labelledby="problems-heading">
+      <div class="l-container">
+        <h2 id="problems-heading" class="c-heading c-heading--section" data-bind="problems.heading"></h2>
+        <p class="s-problems__lead" data-bind="problems.leadText"></p>
+        <ul class="s-problems__list" data-bind-list="problems.items">
+          <!--
+            template:
+            li.s-problems__item
+              span.s-problems__icon[data-bind="icon"]
+              span.s-problems__text[data-bind="text"]
+          -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 4: MANGA STORY
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-manga" aria-labelledby="manga-heading">
+      <div class="l-container">
+        <h2 id="manga-heading" class="c-heading c-heading--section" data-bind="manga.heading"></h2>
+        <p class="s-manga__lead" data-bind="manga.leadText"></p>
+
+        <div class="s-manga__strip" role="group" aria-label="漫画ストーリー">
+          <!-- Each manga panel is a <figure> for semantics + screen readers -->
+          <div class="s-manga__panels" data-bind-list="manga.panels">
+            <!--
+              template:
+              figure.s-manga__panel
+                img.s-manga__panel-img[data-bind-src="imageSrc"][data-bind-alt="imageAlt"][loading="lazy"][decoding="async"][width="460"][height="650"]
+                figcaption.s-manga__panel-caption[data-bind="caption"]
+            -->
+          </div>
+        </div>
+
+        <p class="s-manga__epilogue" data-bind="manga.epilogue"></p>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 5: MID-PAGE CTA
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-mid-cta" aria-labelledby="mid-cta-heading">
+      <div class="l-container s-mid-cta__inner">
+        <h2 id="mid-cta-heading" class="c-heading c-heading--section" data-bind="midCta.heading"></h2>
+        <p class="s-mid-cta__text" data-bind="midCta.text"></p>
+        <a href="" class="c-btn c-btn--cta c-btn--lg" data-bind-href="midCta.ctaHref" data-bind="midCta.ctaText"
+          role="button"></a>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 6: METHOD / APPROACH
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-method" aria-labelledby="method-heading">
+      <div class="l-container">
+        <h2 id="method-heading" class="c-heading c-heading--section" data-bind="method.heading"></h2>
+        <p class="s-method__lead" data-bind="method.leadText"></p>
+
+        <div class="s-method__steps" data-bind-list="method.steps">
+          <!--
+            template:
+            article.s-method__step
+              span.s-method__step-number[data-bind="stepNumber"]
+              h3.s-method__step-title.c-heading[data-bind="title"]
+              p.s-method__step-desc[data-bind="description"]
+              img.s-method__step-img[data-bind-src="imageSrc"][data-bind-alt="imageAlt"][loading="lazy"][decoding="async"][width="400"][height="300"]
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 7: BEFORE / AFTER (RESULTS)
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-results" aria-labelledby="results-heading">
+      <div class="l-container">
+        <h2 id="results-heading" class="c-heading c-heading--section" data-bind="results.heading"></h2>
+        <p class="s-results__lead" data-bind="results.leadText"></p>
+        <p class="s-results__disclaimer" data-bind="results.disclaimer"></p>
+
+        <div class="s-results__cards" data-bind-list="results.cases">
+          <!--
+            template:
+            article.s-results__card
+              div.s-results__card-header
+                span.s-results__card-label[data-bind="label"]
+                span.s-results__card-age[data-bind="age"]
+              div.s-results__card-body
+                div.s-results__before
+                  span.s-results__before-label[data-bind="beforeLabel"]
+                  p.s-results__before-text[data-bind="beforeText"]
+                div.s-results__after
+                  span.s-results__after-label[data-bind="afterLabel"]
+                  p.s-results__after-text[data-bind="afterText"]
+              p.s-results__card-note[data-bind="note"]
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 8: TESTIMONIALS
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-testimonials" aria-labelledby="testimonials-heading">
+      <div class="l-container">
+        <h2 id="testimonials-heading" class="c-heading c-heading--section" data-bind="testimonials.heading"></h2>
+
+        <div class="s-testimonials__list" data-bind-list="testimonials.items">
+          <!--
+            template:
+            article.s-testimonials__item
+              blockquote.s-testimonials__quote
+                p.s-testimonials__text[data-bind="text"]
+              div.s-testimonials__author
+                img.s-testimonials__avatar[data-bind-src="avatarSrc"][data-bind-alt="avatarAlt"][loading="lazy"][decoding="async"][width="64"][height="64"]
+                div.s-testimonials__author-info
+                  cite.s-testimonials__name[data-bind="name"]
+                  span.s-testimonials__detail[data-bind="detail"]
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 9: DOCTOR / STAFF PROFILE
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-profile" aria-labelledby="profile-heading">
+      <div class="l-container s-profile__inner">
+        <div class="s-profile__photo">
+          <img src="" alt="" data-bind-src="profile.imageSrc" data-bind-alt="profile.imageAlt" class="s-profile__img"
+            width="400" height="500" loading="lazy" decoding="async">
+        </div>
+        <div class="s-profile__content">
+          <h2 id="profile-heading" class="c-heading c-heading--section" data-bind="profile.heading"></h2>
+          <p class="s-profile__name" data-bind="profile.name"></p>
+          <p class="s-profile__credentials" data-bind="profile.credentials"></p>
+          <p class="s-profile__message" data-bind="profile.message"></p>
+
+          <ul class="s-profile__qualifications" data-bind-list="profile.qualifications">
+            <!-- template: li.s-profile__qualification[data-bind="text"] -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 10: PRICING / MENU
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-pricing" aria-labelledby="pricing-heading">
+      <div class="l-container">
+        <h2 id="pricing-heading" class="c-heading c-heading--section" data-bind="pricing.heading"></h2>
+        <p class="s-pricing__lead" data-bind="pricing.leadText"></p>
+
+        <div class="s-pricing__cards" data-bind-list="pricing.plans">
+          <!--
+            template:
+            article.s-pricing__card
+              h3.s-pricing__plan-name.c-heading[data-bind="name"]
+              p.s-pricing__price[data-bind="price"]
+              p.s-pricing__duration[data-bind="duration"]
+              ul.s-pricing__features[data-bind-list="features"]
+                li.s-pricing__feature[data-bind="text"]
+              a.c-btn.c-btn--primary.c-btn--block[data-bind-href="ctaHref"][data-bind="ctaText"]
+          -->
+        </div>
+
+        <p class="s-pricing__note" data-bind="pricing.note"></p>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 11: OFFER / CAMPAIGN
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-offer" aria-labelledby="offer-heading">
+      <div class="l-container s-offer__inner">
+        <h2 id="offer-heading" class="c-heading c-heading--section" data-bind="offer.heading"></h2>
+        <p class="s-offer__text" data-bind="offer.text"></p>
+        <div class="s-offer__badge">
+          <span class="s-offer__badge-label" data-bind="offer.badgeLabel"></span>
+          <span class="s-offer__badge-value" data-bind="offer.badgeValue"></span>
+        </div>
+        <p class="s-offer__deadline" data-bind="offer.deadline"></p>
+        <a href="" class="c-btn c-btn--cta c-btn--lg" data-bind-href="offer.ctaHref" data-bind="offer.ctaText"
+          role="button"></a>
+        <p class="s-offer__disclaimer" data-bind="offer.disclaimer"></p>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 12: FAQ
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-faq" aria-labelledby="faq-heading">
+      <div class="l-container">
+        <h2 id="faq-heading" class="c-heading c-heading--section" data-bind="faq.heading"></h2>
+
+        <dl class="s-faq__list" data-bind-list="faq.items">
+          <!--
+            template:
+            div.s-faq__item
+              dt.s-faq__question
+                button.s-faq__toggle[type="button"][aria-expanded="false"][data-bind="question"]
+              dd.s-faq__answer[data-bind="answer"][hidden]
+          -->
+        </dl>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 13: ACCESS / MAP
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-access" aria-labelledby="access-heading">
+      <div class="l-container">
+        <h2 id="access-heading" class="c-heading c-heading--section" data-bind="access.heading"></h2>
+
+        <div class="s-access__info">
+          <dl class="s-access__details">
+            <div class="s-access__detail-row">
+              <dt class="s-access__dt" data-bind="access.addressLabel"></dt>
+              <dd class="s-access__dd" data-bind="access.address"></dd>
+            </div>
+            <div class="s-access__detail-row">
+              <dt class="s-access__dt" data-bind="access.hoursLabel"></dt>
+              <dd class="s-access__dd" data-bind="access.hours"></dd>
+            </div>
+            <div class="s-access__detail-row">
+              <dt class="s-access__dt" data-bind="access.closedLabel"></dt>
+              <dd class="s-access__dd" data-bind="access.closedDays"></dd>
+            </div>
+            <div class="s-access__detail-row">
+              <dt class="s-access__dt" data-bind="access.phoneLabel"></dt>
+              <dd class="s-access__dd">
+                <a href="" data-bind-href="access.phoneHref" data-bind="access.phone"></a>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="s-access__transport" data-bind-list="access.transportItems">
+            <!--
+              template:
+              p.s-access__transport-item
+                span.s-access__transport-icon[data-bind="icon"]
+                span.s-access__transport-text[data-bind="text"]
+            -->
+          </div>
+        </div>
+
+        <div class="s-access__map">
+          <iframe src="" data-bind-src="access.mapEmbedUrl" title="院のGoogleマップ" width="100%" height="400"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 14: FINAL CTA
+         ────────────────────────────────────────────────────────── -->
+    <section class="s-final-cta" aria-labelledby="final-cta-heading">
+      <div class="l-container s-final-cta__inner">
+        <h2 id="final-cta-heading" class="c-heading c-heading--section" data-bind="finalCta.heading"></h2>
+        <p class="s-final-cta__text" data-bind="finalCta.text"></p>
+        <div class="s-final-cta__actions">
+          <a href="" class="c-btn c-btn--cta c-btn--lg" data-bind-href="finalCta.primaryHref"
+            data-bind="finalCta.primaryText" role="button"></a>
+          <a href="" class="c-btn c-btn--secondary c-btn--lg" data-bind-href="finalCta.secondaryHref"
+            data-bind="finalCta.secondaryText" role="button"></a>
+        </div>
+        <p class="s-final-cta__note" data-bind="finalCta.note"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="l-footer" role="contentinfo">
+    <div class="l-container l-footer__inner">
+      <div class="l-footer__brand">
+        <a href="#" class="l-footer__logo" data-bind-href="footer.logoHref">
+          <img src="" alt="" data-bind-src="footer.logoSrc" data-bind-alt="footer.logoAlt" class="l-footer__logo-img"
+            width="140" height="32" loading="lazy" decoding="async">
+        </a>
+        <p class="l-footer__tagline" data-bind="footer.tagline"></p>
+      </div>
+
+      <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="l-footer__nav-list" data-bind-list="footer.navItems">
+          <!-- template: li.l-footer__nav-item > a[data-bind-href="href"][data-bind="label"] -->
+        </ul>
+      </nav>
+
+      <div class="l-footer__social">
+        <ul class="l-footer__social-list" data-bind-list="footer.socialLinks">
+          <!--
+            template:
+            li.l-footer__social-item
+              a.l-footer__social-link[data-bind-href="href"][aria-label=""][data-bind-alt="label"]
+                img[data-bind-src="iconSrc"][data-bind-alt="label"][width="24"][height="24"][loading="lazy"][decoding="async"]
+          -->
+        </ul>
+      </div>
+
+      <p class="l-footer__copyright" data-bind="footer.copyright"></p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       STRUCTURED DATA: LocalBusiness (JSON-LD, populated by script.js)
+       ============================================================ -->
+  <script id="ld-json-placeholder" type="application/ld+json">
+  {}
+  </script>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
