@@ -1,0 +1,30 @@
+functionsDirectory = "/Users/kanrisha/projects/seitai-LP/netlify/functions"
+functionsDirectoryOrigin = "config-v1"
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/kanrisha/projects/seitai-LP"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "# no build command"
+functions = "/Users/kanrisha/projects/seitai-LP/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
