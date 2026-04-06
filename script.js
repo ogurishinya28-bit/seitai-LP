@@ -1,74 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
-  if (!window.LP_CONFIG) {
-    console.error('LP_CONFIG not found. Please check config.js');
-    return;
-  }
-
   const config = window.LP_CONFIG;
+  if (!config) return;
 
-  // 1. Simple Data Binding (Text & HTML)
-  const bindText = () => {
-    const textElements = document.querySelectorAll('[data-bind]');
-    textElements.forEach(el => {
-      const path = el.getAttribute('data-bind');
-      const value = path.split('.').reduce((obj, key) => obj && obj[key], config);
-      if (value !== undefined) {
-        el.innerHTML = value; // <br>を有効にするためinnerHTMLを使用
+  const bind = (el, data) => {
+    // Text/HTML Binding
+    const textPath = el.getAttribute('data-bind');
+    if (textPath) {
+      const val = textPath.split('.').reduce((o, i) => o?.[i], data);
+      if (val !== undefined) el.innerHTML = val;
+    }
+    // Attribute Binding
+    ['src', 'href', 'alt'].forEach(attr => {
+      const path = el.getAttribute(`data-bind-${attr}`);
+      if (path) {
+        const val = path.split('.').reduce((o, i) => o?.[i], data);
+        if (val !== undefined) el.setAttribute(attr, val);
       }
     });
   };
 
-  // 2. Attribute Binding (src, href, alt)
-  const bindAttributes = () => {
-    const attributes = ['src', 'href', 'alt'];
-    attributes.forEach(attr => {
-      const elements = document.querySelectorAll(`[data-bind-${attr}]`);
-      elements.forEach(el => {
-        const path = el.getAttribute(`data-bind-${attr}`);
-        const value = path.split('.').reduce((obj, key) => obj && obj[key], config);
-        if (value !== undefined) {
-          el.setAttribute(attr, value);
-        }
-      });
+  // Process Lists
+  document.querySelectorAll('[data-bind-list]').forEach(container => {
+    const path = container.getAttribute('data-bind-list');
+    const items = path.split('.').reduce((o, i) => o?.[i], config);
+    const template = container.firstElementChild?.cloneNode(true);
+    if (!items || !template) return;
+    container.innerHTML = '';
+    items.forEach(item => {
+      const clone = template.cloneNode(true);
+      bind(clone, item);
+      clone.querySelectorAll('[data-bind], [data-bind-src], [data-bind-href], [data-bind-alt]').forEach(child => bind(child, item));
+      container.appendChild(clone);
     });
-  };
+  });
 
-  // 3. List Binding (Nav, Manga, Problems, etc.)
-  const bindLists = () => {
-    const listElements = document.querySelectorAll('[data-bind-list]');
-    listElements.forEach(container => {
-      const path = container.getAttribute('data-bind-list');
-      const items = path.split('.').reduce((obj, key) => obj && obj[key], config);
-      
-      if (Array.isArray(items)) {
-        // 現在のHTML構造からテンプレートを推測し、中身を空にしてから生成
-        const template = container.innerHTML;
-        container.innerHTML = '';
-        
-        items.forEach(item => {
-          let html = template;
-          // 各プロパティを置換 (例: [data-bind="label"] -> item.label)
-          Object.keys(item).forEach(key => {
-            const regex = new RegExp(`\\[data-bind(-[a-z]+)?="${key}"\\]`, 'g');
-            // 属性置換
-            html = html.replace(/src=""|href=""|alt=""/g, (match) => {
-                if(match.includes('src') && item.imageSrc) return `src="${item.imageSrc}"`;
-                if(match.includes('href') && item.href) return `href="${item.href}"`;
-                if(match.includes('alt') && item.imageAlt) return `alt="${item.imageAlt}"`;
-                return match;
-            });
-            // テキスト置換（タグの中身）
-            const textRegex = new RegExp(`(>[^<]*)(\\[data-bind="${key}"\\])([^<]*<)`, 'g');
-            html = html.replace(textRegex, `$1${item[key] || ''}$3`);
-          });
-          container.insertAdjacentHTML('beforeend', html);
-        });
-      }
-    });
-  };
-
-  bindText();
-  bindAttributes();
-  bindLists();
-  document.body.classList.add('lp-loaded');
+  // Process Single Elements
+  document.querySelectorAll('[data-bind]:not([data-bind-list] *), [data-bind-src], [data-bind-href], [data-bind-alt]').forEach(el => bind(el, config));
 });

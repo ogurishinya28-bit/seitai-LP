@@ -46,7 +46,7 @@
 
       <nav class="l-header__nav" aria-label="メインナビゲーション">
         <ul class="l-header__nav-list" data-bind-list="header.navItems">
-          <!-- template: li.l-header__nav-item > a[data-bind-href="href"][data-bind="label"] -->
+          <li class="l-header__nav-item"><a data-bind-href="href" data-bind="label"></a></li>
         </ul>
       </nav>
 
@@ -123,12 +123,7 @@
         <h2 id="problems-heading" class="c-heading c-heading--section" data-bind="problems.heading"></h2>
         <p class="s-problems__lead" data-bind="problems.leadText"></p>
         <ul class="s-problems__list" data-bind-list="problems.items">
-          <!--
-            template:
-            li.s-problems__item
-              span.s-problems__icon[data-bind="icon"]
-              span.s-problems__text[data-bind="text"]
-          -->
+          <li class="s-problems__item"><span class="s-problems__text" data-bind="text"></span></li>
         </ul>
       </div>
     </section>
@@ -144,12 +139,10 @@
         <div class="s-manga__strip" role="group" aria-label="漫画ストーリー">
           <!-- Each manga panel is a <figure> for semantics + screen readers -->
           <div class="s-manga__panels" data-bind-list="manga.panels">
-            <!--
-              template:
-              figure.s-manga__panel
-                img.s-manga__panel-img[data-bind-src="imageSrc"][data-bind-alt="imageAlt"][loading="lazy"][decoding="async"][width="460"][height="650"]
-                figcaption.s-manga__panel-caption[data-bind="caption"]
-            -->
+            <figure class="s-manga__panel">
+              <img src="" alt="" data-bind-src="imageSrc" data-bind-alt="imageAlt" class="s-manga__panel-img" loading="lazy" width="460" height="650">
+              <figcaption class="s-manga__panel-caption" data-bind="caption"></figcaption>
+            </figure>
           </div>
         </div>
 

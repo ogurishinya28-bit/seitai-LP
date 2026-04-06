@@ -9,8 +9,8 @@ window.LP_CONFIG = {
     "ogUrl": "https://fascinating-mousse-f5f35c.netlify.app"
   },
   "header": {
-    "logoSrc": "images/hero.webp",
-    "logoAlt": "悠整体院 ロゴ",
+    "logoSrc": "",
+    "logoAlt": "悠整体院",
     "ctaText": "今すぐ予約",
     "ctaHref": "#offer",
     "navItems": [
