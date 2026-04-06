@@ -1,101 +1,96 @@
 window.LP_CONFIG = {
-  "lp_id": "yu_seitai_premium_01",
   "meta": {
     "title": "重症腰痛から解放される｜骨盤矯正の専門院 悠整体院",
     "description": "どこに行っても治らない重症腰痛に。延べ30,000人の実績を持つ独自メソッドで、痛みの根本原因から改善し、再発しない身体へ導きます。",
-    "canonical": "https://example.com/lp/yu-seitai",
-    "og_title": "重症腰痛から解放される｜悠整体院",
-    "og_description": "長年の痛みを根本から改善。劇的な変化をもたらすプロの施術ストーリー。",
-    "og_image": "images/hero.webp",
-    "og_url": "https://example.com",
-    "og_site_name": "悠整体院"
+    "canonical": "https://fascinating-mousse-f5f35c.netlify.app",
+    "ogTitle": "重症腰痛から解放される｜悠整体院",
+    "ogDescription": "長年の痛みを根本から改善。劇的な変化をもたらすプロの施術ストーリー。",
+    "ogImage": "images/hero.webp",
+    "ogUrl": "https://fascinating-mousse-f5f35c.netlify.app"
   },
-  "schema": {
-    "addressLocality": "渋谷区",
-    "addressRegion": "東京都",
-    "postalCode": "150-0001",
-    "priceRange": "¥¥¥"
+  "header": {
+    "logoSrc": "images/logo.png",
+    "logoAlt": "悠整体院 ロゴ",
+    "ctaText": "今すぐ予約",
+    "ctaHref": "#offer",
+    "navItems": [
+      { "label": "選ばれる理由", "href": "#method" },
+      { "label": "患者様の声", "href": "#testimonials" },
+      { "label": "料金案内", "href": "#pricing" }
+    ]
   },
-  "clinic_name": "悠整体院",
-  "area_name": "表参道・渋谷",
-  "phone_number": "03-1234-5678",
-  "line_url": "https://line.me/R/ti/p/xxxxx",
-  "address": "東京都渋谷区神宮前4-12-8 表参道ヒルズB1F",
-  "business_hours": "完全予約制 10:00〜21:00",
   "hero": {
-    "catch_copy": "長年のその激痛、<br>ここで終わりにしませんか？",
-    "sub_copy": "表面的な慰安ではなく、<br>人生を取り戻すための「根本治療」を。",
-    "background_image": "images/hero.webp",
-    "background_alt": "悠整体院の施術後の希望に満ちた風景",
-    "cta_text": "まずは専門家に相談する"
+    "title": "長年のその激痛、<br>ここで終わりにしませんか？",
+    "leadText": "表面的な慰安ではなく、<br>人生を取り戻すための「根本治療」を。",
+    "subText": "延べ30,000人が実感した独自の骨格矯正メソッド",
+    "imageSrc": "images/hero.webp",
+    "imageAlt": "悠整体院の施術風景",
+    "ctaText": "まずは専門家に相談する",
+    "ctaHref": "#offer"
   },
-  "problem": {
-    "heading": "このような「限界」を<br>感じていませんか？",
+  "proof": {
+    "heading": "信頼の実績",
     "items": [
-      "朝、ベッドから起き上がるだけで激痛が走る",
-      "痛み止めを手放せず、薬の量が増えている",
-      "マッサージや接骨院に何軒通っても、数日で元通り",
-      "病院で「加齢のせい」と言われ、湿布しか出されない",
-      "デスクワークに集中できず、仕事のパフォーマンスが落ちている",
-      "休日に子供を抱っこすることすら怖くなっている"
+      { "number": "18年", "label": "施術歴" },
+      { "number": "4万件", "label": "臨床実績" },
+      { "number": "98%", "label": "満足度" }
+    ]
+  },
+  "problems": {
+    "heading": "このような「限界」を感じていませんか？",
+    "leadText": "どこに行っても治らなかったその痛み、原因は別のところにあります。",
+    "items": [
+      { "text": "朝、ベッドから起き上がるだけで激痛が走る" },
+      { "text": "痛み止めを手放せず、薬の量が増えている" },
+      { "text": "マッサージに通っても、数日で元通り" },
+      { "text": "病院で「加齢のせい」と言われ、湿布しか出されない" }
     ]
   },
   "manga": {
-    "heading": "あなたと同じ絶望を抱えていた<br>佐藤さん（45歳・会社員）の軌跡",
-    "scene_count": 7,
-    "scenes": [
-      { "image": "assets/manga/1.webp", "alt": "朝、腰の激痛で顔を歪める絶望の瞬間" },
-      { "image": "assets/manga/2.webp", "alt": "痛み止めと診察券が散乱し、限界を感じるデスクワーク" },
-      { "image": "assets/manga/3.webp", "alt": "暗闇の中、スマホで悠整体院を見つけ希望を感じる" },
-      { "image": "assets/manga/4.webp", "alt": "清潔な院内で、院長が真剣に悩みを傾聴する" },
-      { "image": "assets/manga/5.webp", "alt": "痛みのない、優しく的確なプロの施術" },
-      { "image": "assets/manga/6.webp", "alt": "立ち上がり、痛みが消えていることに驚愕する" },
-      { "image": "assets/manga/7.webp", "alt": "休日の公園で、家族と笑顔で歩く完全な再生" }
-    ]
-  },
-  "cause": {
-    "heading": "なぜ、あなたの痛みは<br>今まで治らなかったのか？",
-    "description": "痛い場所を揉むだけの「対症療法」では、一時しのぎにしかなりません。重症腰痛の本当の原因は、日常の蓄積による「骨格の歪み」と「深層筋の機能不全」にあります。",
-    "points": [
-      { "title": "土台となる骨盤・背骨の歪み", "description": "長時間のデスクワークや偏った姿勢により、身体の土台が崩れ、特定の腰の関節に過剰な負荷が集中し続けています。" },
-      { "title": "インナーマッスルの弱化と硬直", "description": "身体を支える深部の筋肉が使えなくなり、表面の筋肉が過緊張を起こすことで、慢性的な血行不良と痛みを引き起こします。" },
-      { "title": "脳が記憶した「痛みの回路」", "description": "痛みが長期間続くと、脳や自律神経が過敏になり、少しの刺激でも激痛として感じてしまう悪循環に陥っています。" }
-    ]
-  },
-  "treatment": {
-    "heading": "悠整体院が提供する<br>「結果」にこだわる3つの約束",
-    "features": [
-      { "icon": "🔬", "title": "独自の精密検査で「真の原因」を特定", "description": "徹底したカウンセリングと姿勢・動作分析により、レントゲンでは見えない筋肉と骨格の異常をミリ単位で特定します。" },
-      { "icon": "👐", "title": "医師も推奨する「無痛」の深層アプローチ", "description": "バキバキ鳴らすような危険な施術は一切行いません。ソフトなタッチで深層筋と筋膜にアプローチし、神経の圧迫を解放します。" },
-      { "icon": "🌱", "title": "「再発ゼロ」を目指す徹底した自立支援", "description": "施術して終わりではありません。あなたのお身体に合わせた専用のストレッチや生活習慣の改善法を指導し、一生モノの健康を提供します。" }
-    ]
-  },
-  "voice": {
-    "heading": "人生を取り戻した<br>患者様からの喜びの声",
-    "items": [
-      { "name": "佐藤 健一 様", "age": "45歳", "gender": "男性", "symptom": "重度の慢性腰痛・坐骨神経痛", "text": "10年以上悩まされた激痛で、手術も覚悟していました。しかし、こちらの初回の施術で身体が羽のように軽くなり、本当に驚きました。今では子供と全力で遊べるようになり、感謝しかありません。", "rating": 5 },
-      { "name": "高橋 雅之 様", "age": "52歳", "gender": "男性", "symptom": "長年のヘルニア", "text": "いくつもの有名な治療院を渡り歩きましたがダメでした。悠整体院は「なぜ痛いのか」の説明が一番腑に落ちました。根本から治っていく実感があり、仕事にも集中できています。", "rating": 5 },
-      { "name": "伊藤 美咲 様", "age": "38歳", "gender": "女性", "symptom": "産後の腰痛・姿勢の崩れ", "text": "高級感のある院内で、とてもリラックスして施術を受けられました。ただ痛みが取れるだけでなく、姿勢まで美しくなり、周りから「若返ったね」と言われるようになりました。", "rating": 5 }
-    ]
-  },
-  "doctor": {
-    "name": "代表院長：山田 悠",
-    "image": "images/doctor.webp",
-    "credentials": [
-      "国家資格（柔道整復師・鍼灸師）保有",
-      "施術歴18年・のべ40,000人以上の臨床実績",
-      "重症特化型・骨盤矯正メソッド 開発者"
+    "heading": "あなたと同じ絶望を抱えていた<br>佐藤さんの軌跡",
+    "leadText": "45歳・会社員の佐藤さんが、どうやって笑顔を取り戻したのか？",
+    "panels": [
+      { "imageSrc": "assets/manga/1.webp", "imageAlt": "激痛の朝", "caption": "朝、起き上がることすらできない…" },
+      { "imageSrc": "assets/manga/2.webp", "imageAlt": "デスクワーク限界", "caption": "仕事中も痛みが気になって集中できない" },
+      { "imageSrc": "assets/manga/3.webp", "imageAlt": "スマホ検索", "caption": "もう限界だ。必死にスマホで探すと…" },
+      { "imageSrc": "assets/manga/4.webp", "imageAlt": "院長相談", "caption": "先生が親身に話を聞いてくれた" },
+      { "imageSrc": "assets/manga/5.webp", "imageAlt": "施術風景", "caption": "驚くほどソフトな施術なのに…" },
+      { "imageSrc": "assets/manga/6.webp", "imageAlt": "驚きの変化", "caption": "えっ、腰が軽い！スッと立てる！" },
+      { "imageSrc": "assets/manga/7.webp", "imageAlt": "再生", "caption": "今では家族と元気に外出できます！" }
     ],
-    "message": "「痛みのせいで、やりたいことを諦めないでください。」私自身、過去に大怪我で絶望を味わい、そこから身体の仕組みを死に物狂いで学びました。慰安目的のマッサージは一切行いません。あなたの人生を狂わせているその痛みを、私が必ず終わらせます。本気で治したいと願うなら、ぜひ一度ご相談ください。"
+    "epilogue": "※効果には個人差があります。"
   },
-  "cta": {
-    "heading": "あなたの「本気」に、私たちが応えます",
-    "sub_text": "【毎月先着10名様限定】重症改善・初回特別プログラム",
-    "offer_label": "初回限定価格",
-    "offer_price": "3,980円",
-    "offer_note": "（通常カウンセリング＋施術 12,000円）",
-    "line_url": "https://line.me/R/ti/p/xxxxx",
-    "line_text": "LINEで予約の空き状況を見る",
-    "phone_text": "03-1234-5678（完全予約制）"
+  "testimonials": {
+    "heading": "人生を取り戻した患者様の声",
+    "items": [
+      { "name": "佐藤 健一 様", "detail": "45歳 / 慢性腰痛", "text": "10年以上悩まされた激痛で手術も覚悟していましたが、こちらで救われました。", "avatarSrc": "images/user1.webp" },
+      { "name": "高橋 雅之 様", "detail": "52歳 / ヘルニア", "text": "説明が一番腑に落ちました。根本から治っていく実感があります。", "avatarSrc": "images/user2.webp" }
+    ]
+  },
+  "profile": {
+    "heading": "「痛みのせいで、やりたいことを諦めないでください。」",
+    "name": "代表院長：山田 悠",
+    "imageSrc": "images/doctor.webp",
+    "imageAlt": "山田院長の近影",
+    "credentials": "国家資格保有・施術歴18年",
+    "message": "私自身、過去に大怪我で絶望を味わい、そこから身体の仕組みを学びました。あなたの人生を狂わせているその痛みを、私が必ず終わらせます。",
+    "qualifications": [
+      { "text": "柔道整復師・鍼灸師（国家資格）" },
+      { "text": "のべ40,000人以上の臨床実績" },
+      { "text": "重症特化型・骨盤矯正メソッド 開発者" }
+    ]
+  },
+  "offer": {
+    "heading": "あなたの「本気」に、応えます",
+    "text": "【毎月先着10名様限定】重症改善・初回特別プログラム",
+    "badgeLabel": "初回限定価格",
+    "badgeValue": "3,980円",
+    "deadline": "今月末まで",
+    "ctaText": "LINEで予約する",
+    "ctaHref": "https://line.me/R/ti/p/xxxxx",
+    "disclaimer": "（通常カウンセリング＋施術 12,000円）"
+  },
+  "accessibility": {
+    "skipLinkText": "メインコンテンツへ移動"
   }
 };
