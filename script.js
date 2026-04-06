@@ -1,141 +1,74 @@
-(function () {
-  "use strict";
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.LP_CONFIG) {
+    console.error('LP_CONFIG not found. Please check config.js');
+    return;
+  }
 
-  function initLP() {
-    const CONFIG = window.LP_CONFIG || {};
+  const config = window.LP_CONFIG;
 
-    function getValue(keyPath) {
-      if (!keyPath) return null;
-      return keyPath.split(".").reduce((obj, key) => (obj && obj[key] !== undefined ? obj[key] : null), CONFIG);
-    }
-
-    function escapeHTML(str) {
-      if (typeof str !== "string") return str;
-      const div = document.createElement("div");
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
-    }
-
-    document.querySelectorAll("[data-bind]").forEach(el => {
-      const key = el.getAttribute("data-bind");
-      const val = getValue(key);
-      if (val !== null) el.textContent = val;
-    });
-
-    document.querySelectorAll("[data-bind-html]").forEach(el => {
-      const key = el.getAttribute("data-bind-html");
-      const val = getValue(key);
-      if (val !== null) el.innerHTML = val;
-    });
-
-    document.querySelectorAll("[data-bind-src]").forEach(el => {
-      const key = el.getAttribute("data-bind-src");
-      const val = getValue(key);
-      if (val !== null) el.setAttribute("src", val);
-    });
-
-    document.querySelectorAll("[data-bind-alt]").forEach(el => {
-      const key = el.getAttribute("data-bind-alt");
-      const val = getValue(key);
-      if (val !== null) el.setAttribute("alt", val);
-    });
-
-    document.querySelectorAll("[data-bind-href]").forEach(el => {
-      const key = el.getAttribute("data-bind-href");
-      const val = getValue(key);
-      if (val !== null) el.setAttribute("href", val);
-    });
-
-    document.querySelectorAll("[data-bind-href-tel]").forEach(el => {
-      const key = el.getAttribute("data-bind-href-tel");
-      const val = getValue(key);
-      if (val !== null) {
-        el.setAttribute("href", `tel:${val.replace(/-/g, "")}`);
+  // 1. Simple Data Binding (Text & HTML)
+  const bindText = () => {
+    const textElements = document.querySelectorAll('[data-bind]');
+    textElements.forEach(el => {
+      const path = el.getAttribute('data-bind');
+      const value = path.split('.').reduce((obj, key) => obj && obj[key], config);
+      if (value !== undefined) {
+        el.innerHTML = value; // <br>を有効にするためinnerHTMLを使用
       }
     });
+  };
 
-    const problemContainer = document.querySelector(".problem-list");
-    if (problemContainer && CONFIG.problem && Array.isArray(CONFIG.problem.items)) {
-      problemContainer.innerHTML = CONFIG.problem.items.map(item => `
-        <li class="problem-item" role="listitem">
-          <span class="problem-check" aria-hidden="true">✔</span>
-          <span>${escapeHTML(item)}</span>
-        </li>
-      `).join("");
-    }
+  // 2. Attribute Binding (src, href, alt)
+  const bindAttributes = () => {
+    const attributes = ['src', 'href', 'alt'];
+    attributes.forEach(attr => {
+      const elements = document.querySelectorAll(`[data-bind-${attr}]`);
+      elements.forEach(el => {
+        const path = el.getAttribute(`data-bind-${attr}`);
+        const value = path.split('.').reduce((obj, key) => obj && obj[key], config);
+        if (value !== undefined) {
+          el.setAttribute(attr, value);
+        }
+      });
+    });
+  };
 
-    const mangaContainer = document.querySelector(".manga-container");
-    if (mangaContainer && CONFIG.manga && Array.isArray(CONFIG.manga.scenes)) {
-      mangaContainer.innerHTML = CONFIG.manga.scenes.map(scene => `
-        <div class="manga-panel" role="listitem">
-          <img src="${escapeHTML(scene.image)}" alt="${escapeHTML(scene.alt)}" loading="lazy" width="800" height="1100">
-        </div>
-      `).join("");
-    }
+  // 3. List Binding (Nav, Manga, Problems, etc.)
+  const bindLists = () => {
+    const listElements = document.querySelectorAll('[data-bind-list]');
+    listElements.forEach(container => {
+      const path = container.getAttribute('data-bind-list');
+      const items = path.split('.').reduce((obj, key) => obj && obj[key], config);
+      
+      if (Array.isArray(items)) {
+        // 現在のHTML構造からテンプレートを推測し、中身を空にしてから生成
+        const template = container.innerHTML;
+        container.innerHTML = '';
+        
+        items.forEach(item => {
+          let html = template;
+          // 各プロパティを置換 (例: [data-bind="label"] -> item.label)
+          Object.keys(item).forEach(key => {
+            const regex = new RegExp(`\\[data-bind(-[a-z]+)?="${key}"\\]`, 'g');
+            // 属性置換
+            html = html.replace(/src=""|href=""|alt=""/g, (match) => {
+                if(match.includes('src') && item.imageSrc) return `src="${item.imageSrc}"`;
+                if(match.includes('href') && item.href) return `href="${item.href}"`;
+                if(match.includes('alt') && item.imageAlt) return `alt="${item.imageAlt}"`;
+                return match;
+            });
+            // テキスト置換（タグの中身）
+            const textRegex = new RegExp(`(>[^<]*)(\\[data-bind="${key}"\\])([^<]*<)`, 'g');
+            html = html.replace(textRegex, `$1${item[key] || ''}$3`);
+          });
+          container.insertAdjacentHTML('beforeend', html);
+        });
+      }
+    });
+  };
 
-    const causeContainer = document.querySelector(".cause-points");
-    if (causeContainer && CONFIG.cause && Array.isArray(CONFIG.cause.points)) {
-      causeContainer.innerHTML = CONFIG.cause.points.map(point => `
-        <article class="cause-card" role="listitem">
-          <h3>${escapeHTML(point.title)}</h3>
-          <p>${escapeHTML(point.description)}</p>
-        </article>
-      `).join("");
-    }
-
-    const treatmentContainer = document.querySelector(".treatment-features");
-    if (treatmentContainer && CONFIG.treatment && Array.isArray(CONFIG.treatment.features)) {
-      treatmentContainer.innerHTML = CONFIG.treatment.features.map(feat => `
-        <article class="feature-card" role="listitem">
-          <span class="feature-icon" aria-hidden="true">${escapeHTML(feat.icon)}</span>
-          <h3>${escapeHTML(feat.title)}</h3>
-          <p>${escapeHTML(feat.description)}</p>
-        </article>
-      `).join("");
-    }
-
-    const voiceContainer = document.querySelector(".voice-container");
-    if (voiceContainer && CONFIG.voice && Array.isArray(CONFIG.voice.items)) {
-      voiceContainer.innerHTML = CONFIG.voice.items.map(v => {
-        const rating = v.rating ? parseInt(v.rating, 10) : 5;
-        const stars = "★★★★★".slice(0, rating);
-        let profile = escapeHTML(v.name || "");
-        if (v.age && v.gender) profile += `（${escapeHTML(v.age)}・${escapeHTML(v.gender)}）`;
-        else if (v.age) profile += `（${escapeHTML(v.age)}）`;
-        else if (v.gender) profile += `（${escapeHTML(v.gender)}）`;
-        return `
-          <article class="voice-card" role="listitem">
-            <div class="voice-meta">
-              <span class="voice-rating" aria-label="評価: ${rating}/5">${stars}</span>
-              <span class="voice-profile">${profile}</span>
-            </div>
-            ${v.symptom ? `<p class="voice-symptom">${escapeHTML(v.symptom)}</p>` : ""}
-            <blockquote>${escapeHTML(v.text || "")}</blockquote>
-          </article>
-        `;
-      }).join("");
-    }
-
-    const doctorContainer = document.querySelector(".doctor-credentials");
-    if (doctorContainer && CONFIG.doctor && Array.isArray(CONFIG.doctor.credentials)) {
-      doctorContainer.innerHTML = CONFIG.doctor.credentials.map(c => `<li>${escapeHTML(c)}</li>`).join("");
-    }
-
-    const footerYearEl = document.getElementById("footer-year");
-    if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
-
-    if (CONFIG.meta) {
-      if (CONFIG.meta.title) document.title = CONFIG.meta.title;
-      const descEl = document.querySelector('meta[name="description"]');
-      if (descEl && CONFIG.meta.description) descEl.setAttribute("content", CONFIG.meta.description);
-    }
-
-    document.body.classList.add("lp-loaded");
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initLP);
-  } else {
-    initLP();
-  }
-})();
+  bindText();
+  bindAttributes();
+  bindLists();
+  document.body.classList.add('lp-loaded');
+});

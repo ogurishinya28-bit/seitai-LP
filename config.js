@@ -4,12 +4,12 @@ window.LP_CONFIG = {
     "description": "どこに行っても治らない重症腰痛に。延べ30,000人の実績を持つ独自メソッドで、痛みの根本原因から改善し、再発しない身体へ導きます。",
     "canonical": "https://fascinating-mousse-f5f35c.netlify.app",
     "ogTitle": "重症腰痛から解放される｜悠整体院",
-    "ogDescription": "長年の痛みを根本から改善。劇的な変化をもたらすプロの施術ストーリー。",
+    "ogDescription": "長年の痛みを根本から改善. 劇的な変化をもたらすプロの施術ストーリー.",
     "ogImage": "images/hero.webp",
     "ogUrl": "https://fascinating-mousse-f5f35c.netlify.app"
   },
   "header": {
-    "logoSrc": "images/logo.png",
+    "logoSrc": "images/hero.webp",
     "logoAlt": "悠整体院 ロゴ",
     "ctaText": "今すぐ予約",
     "ctaHref": "#offer",
@@ -60,13 +60,6 @@ window.LP_CONFIG = {
     ],
     "epilogue": "※効果には個人差があります。"
   },
-  "testimonials": {
-    "heading": "人生を取り戻した患者様の声",
-    "items": [
-      { "name": "佐藤 健一 様", "detail": "45歳 / 慢性腰痛", "text": "10年以上悩まされた激痛で手術も覚悟していましたが、こちらで救われました。", "avatarSrc": "images/user1.webp" },
-      { "name": "高橋 雅之 様", "detail": "52歳 / ヘルニア", "text": "説明が一番腑に落ちました。根本から治っていく実感があります。", "avatarSrc": "images/user2.webp" }
-    ]
-  },
   "profile": {
     "heading": "「痛みのせいで、やりたいことを諦めないでください。」",
     "name": "代表院長：山田 悠",
@@ -79,16 +72,6 @@ window.LP_CONFIG = {
       { "text": "のべ40,000人以上の臨床実績" },
       { "text": "重症特化型・骨盤矯正メソッド 開発者" }
     ]
-  },
-  "offer": {
-    "heading": "あなたの「本気」に、応えます",
-    "text": "【毎月先着10名様限定】重症改善・初回特別プログラム",
-    "badgeLabel": "初回限定価格",
-    "badgeValue": "3,980円",
-    "deadline": "今月末まで",
-    "ctaText": "LINEで予約する",
-    "ctaHref": "https://line.me/R/ti/p/xxxxx",
-    "disclaimer": "（通常カウンセリング＋施術 12,000円）"
   },
   "accessibility": {
     "skipLinkText": "メインコンテンツへ移動"

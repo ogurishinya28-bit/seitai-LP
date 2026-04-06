@@ -1662,3 +1662,19 @@ body {
     transform: none !important;
   }
 }
+
+/* 中央寄せの強制修正 */
+.l-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+section {
+  width: 100%;
+  overflow: hidden;
+}
